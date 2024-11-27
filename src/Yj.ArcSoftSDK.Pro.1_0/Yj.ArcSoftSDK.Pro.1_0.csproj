@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../Package.props" />
+	<PropertyGroup>
+		<RootNamespace>Yj.ArcSoftSDK.Pro._1_0</RootNamespace>
+		<Platforms>AnyCPU;x64</Platforms>
+	</PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="runtimes\**" />
+      <EmbeddedResource Remove="runtimes\**" />
+      <None Remove="runtimes\**" />
+    </ItemGroup>      
+        
+    <ItemGroup>
+        <Compile Update="ASFFunctions*.cs">
+            <DependentUpon>ASFFunctions.cs</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="runtimes\linux-x64.Pro.1.0\**" Link="ArcLib\Pro.1.0\%(Filename)%(Extension)">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="runtimes\**">
+            <Pack>true</Pack>
+            <PackagePath>runtimes\</PackagePath>
+        </Content>
+        <Content Include="Readme.md">
+            <Pack>true</Pack>
+            <PackagePath>\</PackagePath>
+        </Content>
+    </ItemGroup>
+
+</Project>

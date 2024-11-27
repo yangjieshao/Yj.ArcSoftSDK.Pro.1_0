@@ -78,7 +78,7 @@ namespace Yj.ArcSoftSDK.Pro._1_0
         /// 人脸检测
         /// </summary>
         /// <param name="pEngine">引擎handle</param>
-        /// <param name="imgData">图像数据 <see cref="LPASF_ImageData"/></param>
+        /// <param name="imgData">图像数据 <see cref="ASVL_OFFSCREEN"/></param>
         /// <param name="detectedFaces">人脸检测结果</param>
         /// <param name="detectModel">预留字段 暂时使用 <see cref="ASF_DetectModel.ASF_DETECT_MODEL_RGB"/></param>
         /// <returns>调用结果</returns>
@@ -105,7 +105,7 @@ namespace Yj.ArcSoftSDK.Pro._1_0
         /// 人脸图像质量检测
         /// </summary>
         /// <param name="pEngine">引擎handle</param>
-        /// <param name="imgData">图像数据 <see cref="LPASF_ImageData"/></param>
+        /// <param name="imgData">图像数据 <see cref="ASVL_OFFSCREEN"/></param>
         /// <param name="faceInfo">人脸检测结果<see cref="ASF_SingleFaceInfo"/></param>
         /// <param name="isMask">仅支持传入1、0、-1，戴口罩 1，否则认为未戴口罩</param>
         /// <param name="confidenceLevel">人脸图像质量检测结果</param>
@@ -134,7 +134,7 @@ namespace Yj.ArcSoftSDK.Pro._1_0
         /// 单人脸特征提取
         /// </summary>
         /// <param name="pEngine">引擎handle</param>
-        /// <param name="imgData">图像数据 <see cref="LPASF_ImageData"/></param>
+        /// <param name="imgData">图像数据 <see cref="ASVL_OFFSCREEN"/></param>
         /// <param name="faceInfo">人脸检测结果<see cref="ASF_SingleFaceInfo"/></param>
         /// <param name="registerOrNot">注册照/识别照<see cref="ASF_RegisterOrNot"/> </param>
         /// <param name="mask">带口罩 1，否则0</param>

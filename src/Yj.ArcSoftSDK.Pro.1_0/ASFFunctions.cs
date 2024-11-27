@@ -62,6 +62,7 @@ namespace Yj.ArcSoftSDK.Pro._1_0
             bool needImageQuality = false, bool isRegister = true)
         {
             var imageInfoPtr = MemoryUtil.Malloc(MemoryUtil.SizeOf(typeof(ASVL_OFFSCREEN)));
+            Console.WriteLine("MemoryUtil.Malloc(MemoryUtil.SizeOf(typeof(ASVL_OFFSCREEN))) "+ imageInfoPtr);
             MemoryUtil.StructureToPtr(imageInfo, imageInfoPtr);
 
             var multiFaceInfo = DetectFaceEx(pEngine, imageInfoPtr);
@@ -92,7 +93,7 @@ namespace Yj.ArcSoftSDK.Pro._1_0
                 ReadyFaceinStruct(pEngine, needFaceInfo, needRgbLive, multiFaceInfo, ref hadFaceInfo,
                     ref ageInfo, ref genderInfo, ref rgbLiveInfo, ref hadRgbLive, pMultiFaceInfo,
                     ref maskInfo,out int[] orienArry, out ASF_Face3DAngle[] face3DAngleInfoArry);
-                MemoryUtil.Free(ref pMultiFaceInfo);
+                //MemoryUtil.Free(ref pMultiFaceInfo);
                 if (needIrLive
                     /*&& multiFaceInfo.FaceNum == 1*/)
                 {

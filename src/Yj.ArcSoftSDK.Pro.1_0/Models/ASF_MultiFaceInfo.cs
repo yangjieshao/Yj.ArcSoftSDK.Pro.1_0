@@ -46,11 +46,11 @@
         /// </summary>
         public nint ForeheadRect;
 
-        ///// <summary>
-        ///// 人脸属性信息
-        ///// <see cref="ASF_FaceAttributeInfo"/>
-        ///// </summary>
-        //public nint FaceAttributeInfo;
+        /// <summary>
+        /// 人脸属性信息
+        /// <see cref="ASF_FaceAttributeInfo"/>
+        /// </summary>
+        public nint FaceAttributeInfo;
 
         /// <summary>
         /// 人脸3D角度

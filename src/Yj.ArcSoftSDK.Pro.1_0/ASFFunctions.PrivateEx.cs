@@ -20,6 +20,7 @@ namespace Yj.ArcSoftSDK.Pro._1_0
             var pMultiFaceInfo = MemoryUtil.Malloc(MemoryUtil.SizeOf(typeof(ASF_MultiFaceInfo)));
 
             int retCode = ASFFunctions_Pro_Linux.ASFDetectFacesEx(pEngine, imageInfo, pMultiFaceInfo, (int)ASF_DetectModel.ASF_DETECT_MODEL_RGB);
+            Console.WriteLine("ASFDetectFacesEx " + retCode);
             var result = default(ASF_MultiFaceInfo);
             if (retCode == 0)
             {

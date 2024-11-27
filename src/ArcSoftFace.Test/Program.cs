@@ -59,7 +59,6 @@ namespace ArcSoftFace.Test
             try
             {
                 var buffer1 = File.ReadAllBytes("pics/1.jpg");
-                Console.WriteLine("read buffer1");
                 var faceInfos = ASFFunctions.DetectFacesEx(_pVideoRGBImageEngine, buffer1,
                                                             faceMinWith: 0,
                                                             needCheckImage: true,
@@ -69,7 +68,6 @@ namespace ArcSoftFace.Test
                                                             needFeatures: true,
                                                             isRegister: true);
                 var buffer2 = File.ReadAllBytes("pics/2.jpg");
-                Console.WriteLine("read buffer2");
                 var faceInfos2 = ASFFunctions.DetectFacesEx(_pVideoRGBImageEngine, buffer2,
                                                             faceMinWith: 0,
                                                             needCheckImage: true,

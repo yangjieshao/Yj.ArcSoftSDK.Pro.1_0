@@ -1,7 +1,6 @@
 ﻿using SkiaSharp;
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using Yj.ArcSoftSDK.Pro._1_0.Models;
 using Yj.ArcSoftSDK.Pro._1_0.Utils;
 
@@ -34,7 +33,7 @@ namespace Yj.ArcSoftSDK.Pro._1_0
                 needImage = ImageUtil.CheckImage(needImage);
             }
             var imageInfo = ImageUtil.GetImageData(needImage);
-            Console.WriteLine("ImageUtil.GetImageData");
+            Console.WriteLine($"ImageUtil.GetImageData {imageInfo.i32Width}*{imageInfo.i32Height} {imageInfo.pi32Pitch[0]} {imageInfo.ppu8Plane[0]}");
             var result = DetectFacesEx(pEngine, imageInfo, faceMinWith, needFaceInfo, needRgbLive, needIrLive
                 , needFeatures, needImageQuality, isRegister);
             MemoryUtil.Free(ref imageInfo.ppu8Plane[0]);
@@ -62,11 +61,10 @@ namespace Yj.ArcSoftSDK.Pro._1_0
             bool needImageQuality = false, bool isRegister = true)
         {
             var imageInfoPtr = MemoryUtil.Malloc(MemoryUtil.SizeOf(typeof(ASVL_OFFSCREEN)));
-            Console.WriteLine("MemoryUtil.Malloc(MemoryUtil.SizeOf(typeof(ASVL_OFFSCREEN))) "+ imageInfoPtr);
             MemoryUtil.StructureToPtr(imageInfo, imageInfoPtr);
 
             var multiFaceInfo = DetectFaceEx(pEngine, imageInfoPtr);
-            Console.WriteLine("DetectFaceEx "+ multiFaceInfo.FaceNum);
+            Console.WriteLine("DetectFaceEx FaceNum：" + multiFaceInfo.FaceNum);
             var result = new List<FaceInfo>(multiFaceInfo.FaceNum);
             if (multiFaceInfo.FaceNum > 0)
             {
@@ -93,7 +91,7 @@ namespace Yj.ArcSoftSDK.Pro._1_0
                 ReadyFaceinStruct(pEngine, needFaceInfo, needRgbLive, multiFaceInfo, ref hadFaceInfo,
                     ref ageInfo, ref genderInfo, ref rgbLiveInfo, ref hadRgbLive, pMultiFaceInfo,
                     ref maskInfo,out int[] orienArry, out ASF_Face3DAngle[] face3DAngleInfoArry);
-                //MemoryUtil.Free(ref pMultiFaceInfo);
+                MemoryUtil.Free(ref pMultiFaceInfo);
                 if (needIrLive
                     /*&& multiFaceInfo.FaceNum == 1*/)
                 {

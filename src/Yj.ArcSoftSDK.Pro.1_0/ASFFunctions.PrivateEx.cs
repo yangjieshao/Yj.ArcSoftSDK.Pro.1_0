@@ -19,12 +19,15 @@ namespace Yj.ArcSoftSDK.Pro._1_0
 
             var pMultiFaceInfo = MemoryUtil.Malloc(MemoryUtil.SizeOf(typeof(ASF_MultiFaceInfo)));
 
+            Console.WriteLine($"pEngine: {pEngine} imageInfo:{imageInfo} pMultiFaceInfo:{pMultiFaceInfo}");
             int retCode = ASFFunctions_Pro_Linux.ASFDetectFacesEx(pEngine, imageInfo, pMultiFaceInfo, (int)ASF_DetectModel.ASF_DETECT_MODEL_RGB);
             Console.WriteLine("ASFDetectFacesEx " + retCode);
             var result = default(ASF_MultiFaceInfo);
             if (retCode == 0)
             {
                 result = (ASF_MultiFaceInfo)MemoryUtil.PtrToStructure(pMultiFaceInfo, typeof(ASF_MultiFaceInfo));
+
+                Console.WriteLine($"DetectFaceEx FaceNum：{result.FaceNum} {result.FaceDataInfoList} {result.FaceOrients} {result.Face3DAngleInfo} {result.FaceRects}");
             }
             MemoryUtil.Free(ref pMultiFaceInfo);
             return result;
@@ -49,10 +52,13 @@ namespace Yj.ArcSoftSDK.Pro._1_0
             var retCode = ASFFunctions_Pro_Linux.ASFFaceFeatureExtractEx(pEngine, imageInfo, pSingleFaceInfo, (int)(isRegister ? ASF_RegisterOrNot.ASF_REGISTER : ASF_RegisterOrNot.ASF_RECOGNITION), hadMask ? 1 : 0, pFaceFeature);
 
             byte[] feature = null;
+            Console.WriteLine($"ASFFaceFeatureExtractEx：{retCode}");
             if (retCode == 0)
             {
+                Console.WriteLine($"ASFFaceFeatureExtractEx pFaceFeature：{pFaceFeature}");
                 //人脸特征feature过滤
                 var faceFeature = (ASF_FaceFeature)MemoryUtil.PtrToStructure(pFaceFeature, typeof(ASF_FaceFeature));
+                Console.WriteLine($"ASFFaceFeatureExtractEx FeatureSize：{faceFeature.FeatureSize}");
                 feature = new byte[faceFeature.FeatureSize];
                 MemoryUtil.Copy(faceFeature.Feature, feature, 0, faceFeature.FeatureSize);
             }

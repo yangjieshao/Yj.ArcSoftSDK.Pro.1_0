@@ -1,4 +1,6 @@
-﻿namespace Yj.ArcSoftSDK.Pro._1_0.Models
+﻿using System;
+
+namespace Yj.ArcSoftSDK.Pro._1_0.Models
 {
     /// <summary>
     /// 3D人脸角度检测结构体
@@ -8,16 +10,16 @@
         /// <summary>
         /// <see cref="float"/>
         /// </summary>
-        public nint Roll;
+        public float Roll;
 
         /// <summary>
         /// <see cref="float"/>
         /// </summary>
-        public nint Yaw;
+        public float Yaw;
 
         /// <summary>
         /// <see cref="float"/>
         /// </summary>
-        public nint Pitch;
+        public float Pitch;
     }
 }

@@ -9,6 +9,7 @@ namespace ArcSoftFace.Test
         static void Main(string[] args)
         {
             Console.WriteLine(".NETVersion:" + Environment.Version);
+
             var arcTestUtil = new ArcTestUtil();
             arcTestUtil.InitEngines();
             arcTestUtil.Test1();
@@ -45,7 +46,7 @@ namespace ArcSoftFace.Test
 
                 var retCode = ASFFunctions.InitEngine(pEngine: ref _pVideoRGBImageEngine, isImgMode: true, faceMaxNum: 5,
                     isAngleZeroOnly: false, needFaceInfo: true, needRgbLive: true, needIrLive: true, needFaceFeature: true,
-                    needImageQuality: true);
+                    needImageQuality: true, isBigRecMod:false);
                 Console.WriteLine($"Init pEngine: {retCode}");
             }
             catch (Exception ex)

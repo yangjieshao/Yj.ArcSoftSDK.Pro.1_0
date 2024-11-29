@@ -30,20 +30,12 @@ namespace Yj.ArcSoftSDK.Pro._1_0.Utils
         /// 释放ptr托管的内存
         /// </summary>
         /// <param name="ptr">托管指针</param>
-        public static void Free(nint ptr)
-        {
-            Marshal.FreeHGlobal(ptr);
-        }
-
-        /// <summary>
-        /// 释放ptr托管的内存
-        /// </summary>
-        /// <param name="ptr">托管指针</param>
         public static void Free(ref nint ptr)
         {
+            return;
             if (ptr != nint.Zero)
             {
-                Free(ptr);
+                Marshal.FreeHGlobal(ptr);
                 ptr = nint.Zero;
             }
         }
@@ -122,6 +114,10 @@ namespace Yj.ArcSoftSDK.Pro._1_0.Utils
         /// </summary>
         public static int PtrToInt(nint ptr)
         {
+            if (ptr == IntPtr.Zero)
+            {
+                return 0;
+            }
             var intBuffer = new byte[4];
             Marshal.Copy(ptr, intBuffer, 0, intBuffer.Length);
             return BitConverter.ToInt32(intBuffer, 0);
@@ -131,6 +127,11 @@ namespace Yj.ArcSoftSDK.Pro._1_0.Utils
         /// </summary>
         public static float PtrToFloat(nint ptr)
         {
+            Console.WriteLine($"PtrToFloat:{ptr}");
+            if (ptr == IntPtr.Zero)
+            {
+                return 0.0f;
+            }
             var intBuffer = new byte[4];
             Marshal.Copy(ptr, intBuffer, 0, intBuffer.Length);
             return BitConverter.ToSingle(intBuffer, 0);

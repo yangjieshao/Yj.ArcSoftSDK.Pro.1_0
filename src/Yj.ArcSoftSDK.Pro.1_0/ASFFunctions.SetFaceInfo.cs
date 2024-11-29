@@ -83,8 +83,8 @@ namespace Yj.ArcSoftSDK.Pro._1_0
                 Face3DAngle = new Face3DAngle
                 {
                     Pitch = face3DAngleInfoArry[i].Pitch,
-                    Roll = face3DAngleInfoArry[i].Roll,
-                    Yaw = face3DAngleInfoArry[i].Yaw,
+                    Roll =   face3DAngleInfoArry[i].Roll,
+                    Yaw =     face3DAngleInfoArry[i].Yaw,
                 }
             };
 

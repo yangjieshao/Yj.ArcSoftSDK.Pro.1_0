@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ArcSoftFace.Test": {
+      "commandName": "Project",
+      "remoteDebugEnabled": true
+    }
+  }
+}
